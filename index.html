@@ -56,7 +56,6 @@
         </div>
     </div>
 
-    <!--ADD COLOR TO THE JSON-->
     <div id="my_dataviz"></div>
     <script>
 
@@ -76,12 +75,11 @@
             .attr("align", "center");
 
         //Read the data
-        //New Data Link: https://raw.githubusercontent.com/paytoneross/Mobile-Data-Narrative/refs/heads/main/data.json
-        d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function (data) {
+        d3.csv("https://raw.githubusercontent.com/paytoneross/Mobile-Data-Narrative/refs/heads/main/data.json", function (data) {
 
             // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
-            var myGroups = d3.map(data, function (d) { return d.group; }).keys()
-            var myVars = d3.map(data, function (d) { return d.variable; }).keys()
+            var myGroups = d3.map(data, function (d) { return d.position; }).keys() //position / x axis / group
+            var myVars = d3.map(data, function (d) { return d.album; }).keys() //album / y axis / variable
 
             // Build X scales and axis:
             var x = d3.scaleBand()
@@ -100,14 +98,9 @@
                 .domain(myVars)
                 .padding(0.05);
             svg.append("g")
-                .style("font-size", 18) //Changed Y axis label font size
+                .style("font-size", 10)
                 .call(d3.axisLeft(y).tickSize(0))
                 .select(".domain").remove()
-
-            // Build color scale
-            var myColor = d3.scaleSequential()
-                .interpolator(d3.interpolateInferno)
-                .domain([1, 100])
 
             // create a tooltip
             var tooltip = d3.select("#my_dataviz")
@@ -126,12 +119,13 @@
                     .style("opacity", 1)
                 d3.select(this)
                     .style("stroke", "black")
-                    .style("opacity", 0.7) //Changed squared hovered over icon opacity
+                    .style("opacity", 1) //Changed squared hovered over icon opacity
             }
             var mousemove = function (d) {
                 tooltip
                     //<br> to start a new line
-                    .html("Number of times played: <br>" + d.value) //Changed hover text
+                    .html("Song Name: " + d.name + "<br>")
+                    .html("Number of times played: " + d.count) //count / value
                     .style("left", (d3.mouse(this)[0] + 70) + "px")
                     .style("top", (d3.mouse(this)[1]) + "px")
                     .style("text-align", "center") //Added text align
@@ -141,24 +135,24 @@
                     .style("opacity", 0)
                 d3.select(this)
                     .style("stroke", "none")
-                    .style("opacity", function (d) { return (d.value / (d3.max(data, d => d.value))) })
+                    .style("opacity", function (d) { return (d.count / (d3.max(data, d => d.count))) }) //count / value
             }
 
             // add the squares
             svg.selectAll()
-                .data(data, function (d) { return d.group + ':' + d.variable; })
+                .data(data, function (d) { return d.position + ':' + d.album; })
                 .enter()
                 .append("rect")
-                .attr("x", function (d) { return x(d.group) })
-                .attr("y", function (d) { return y(d.variable) })
+                .attr("x", function (d) { return x(d.position) }) //position / x axis / group
+                .attr("y", function (d) { return y(d.album) }) //album / y axis / variable
                 .attr("rx", 4)
                 .attr("ry", 4)
                 .attr("width", x.bandwidth())
                 .attr("height", y.bandwidth())
-                .style("fill", function (d) { return myColor(d.value) })
+                .style("fill", function (d) { return d.color })
                 .style("stroke-width", 4)
                 .style("stroke", "none")
-                .style("opacity", function (d) { return (d.value / (d3.max(data, d => d.value))) })
+                .style("opacity", function (d) { return (d.count / (d3.max(data, d => d.count))) })
                 //.attr("fake", d => console.log((d.value / (d3.max(data, d => d.value)))))
                 .on("mouseover", mouseover)
                 .on("mousemove", mousemove)
@@ -170,16 +164,16 @@
             .attr("x", 0)
             .attr("y", -50)
             .attr("text-anchor", "center")
-            .style("font-size", "30px") //Changed size
-            .text("Songs By Album:"); //Changed title text
+            .style("font-size", "30px")
+            .text("Songs By Album:");
 
         // Add subtitle to graph
         svg.append("text")
             .attr("x", 0)
             .attr("y", -20)
             .attr("text-anchor", "center")
-            .style("font-size", "18px") //Changed size
-            .style("fill", "black") //Changed color
+            .style("font-size", "18px")
+            .style("fill", "black")
             .style("max-width", 400)
             .text("The darker the color, the more times the song was played."); //Changed subtitle text
     </script>
