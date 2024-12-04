@@ -1,0 +1,16 @@
+body
+{
+    padding: 20px;
+}
+h1
+{
+    font-family: fantasy;
+    font-size: 150px;
+    text-align: center;
+}
+p
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-align: left;
+}

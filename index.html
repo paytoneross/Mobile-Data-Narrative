@@ -1,19 +1,69 @@
 <html>
 
 <head>
+    <title>Mobile Data Narrative</title>
     <meta charset="utf-8">
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
 
 <body>
+    <!--300+ Word Narrative that describes my data.
+    Answer these questions: 
+    What conclusions can be made based on the data you collected?
+    A conclusion must be drawn from each data visualization.-->
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Pearl Jam Data Narrative</h1>
+        </div>
+        <div class="row">
+            <p>For my data narrative, I decided to write about Pearl Jam's 2024 world tour setlist data.</p>
+            <p>&nbsp; &nbsp; &nbsp; &nbsp;I chose to write about this because Pearl Jam is one of my favorite bands, the
+                new album they put out this year is killer,
+                and the way they make their setlists is actually pretty interesting. Pearl Jam likes to write a unique
+                setlist for
+                every single show they play, and this makes their concerts super fun because you never know exactly what
+                you are going to get.
+                Because their setlists are always so unique, I wanted to analyze the data from their recent world tour
+                and see what trends we can find.
+            </p>
+            <p>&nbsp; &nbsp; &nbsp; &nbsp;Specifically, I wanted to categorize songs based on their concert rarity and
+                determine a rough likelyhood that each song could be played at any given show.
+                We can use this data to predict certain key songs in the setlist, such as the main set opening and
+                closing songs, as well as the encore opening and closing songs.
+                And we can also group songs by record, and determine a likely spread of songs from each record that
+                could be played at any given show.
+            </p>
+            <p>&nbsp; &nbsp; &nbsp; &nbsp;To ensure my data is accurate, I pulled the setlists from Pearl Jam's own
+                website and then verified them through the website "setlist.fm"
+                and the "Unofficial PJ Stat Tracker" fan app. I double verified them because Pearl Jam likes to "tag"
+                songs within other songs, or just play
+                snippits of certain songs and the official website doesn't always list those, so this makes sure I have
+                the most accurate data possible. I also only used
+                the data from their 2024 world tour, because the objective is to project likelyhood that songs could be
+                played at future shows. The Dark Matter tour
+                will obviously play a lot of songs from Dark Matter, so we can only guess how often these songs will be
+                played in the future, but songs from past records
+                will likely be played at a similar rate whenever Pearl Jam goes on tour again.
+            </p>
+        </div>
+    </div>
+
+    <!--ADD COLOR TO THE JSON-->
     <div id="my_dataviz"></div>
     <script>
 
         // set the dimensions and margins of the graph
         var margin = { top: 80, right: 25, bottom: 30, left: 40 },
-            width = 1200 - margin.left - margin.right,
-            height = 1200 - margin.top - margin.bottom; //Changed total size
+            width = 800 - margin.left - margin.right,
+            height = 800 - margin.top - margin.bottom; //Changed total size
 
         // append the svg object to the body of the page
         var svg = d3.select("#my_dataviz")
@@ -26,7 +76,6 @@
             .attr("align", "center");
 
         //Read the data
-        //Old Data Link: https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv
         //New Data Link: https://raw.githubusercontent.com/paytoneross/Mobile-Data-Narrative/refs/heads/main/data.json
         d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function (data) {
 
@@ -60,11 +109,6 @@
                 .interpolator(d3.interpolateInferno)
                 .domain([1, 100])
 
-            // Create opacity scale
-            // var myOpacity = d3.scaleSequential()
-            //     .interpolator()
-            //     .domain([0, 1])
-
             // create a tooltip
             var tooltip = d3.select("#my_dataviz")
                 .append("div")
@@ -97,7 +141,7 @@
                     .style("opacity", 0)
                 d3.select(this)
                     .style("stroke", "none")
-                    .style("opacity", 0.8)
+                    .style("opacity", function (d) { return (d.value / (d3.max(data, d => d.value))) })
             }
 
             // add the squares
@@ -112,10 +156,9 @@
                 .attr("width", x.bandwidth())
                 .attr("height", y.bandwidth())
                 .style("fill", function (d) { return myColor(d.value) })
-                //.style("fill", )
                 .style("stroke-width", 4)
                 .style("stroke", "none")
-                .style("opacity", function(d) { return (d.value / (d3.max(data, d => d.value))) }) //WEEK 2 - Created variable opacity system
+                .style("opacity", function (d) { return (d.value / (d3.max(data, d => d.value))) })
                 //.attr("fake", d => console.log((d.value / (d3.max(data, d => d.value)))))
                 .on("mouseover", mouseover)
                 .on("mousemove", mousemove)
@@ -126,21 +169,19 @@
         svg.append("text")
             .attr("x", 0)
             .attr("y", -50)
-            .attr("text-anchor", "left")
+            .attr("text-anchor", "center")
             .style("font-size", "30px") //Changed size
-            .text("Will eventually be a cool PJ graphic"); //Changed title text
+            .text("Songs By Album:"); //Changed title text
 
         // Add subtitle to graph
         svg.append("text")
             .attr("x", 0)
             .attr("y", -20)
-            .attr("text-anchor", "left")
+            .attr("text-anchor", "center")
             .style("font-size", "18px") //Changed size
             .style("fill", "black") //Changed color
             .style("max-width", 400)
-            .text("Rows will be records and columns will be songs in each position"); //Changed subtitle text
-
-
+            .text("The darker the color, the more times the song was played."); //Changed subtitle text
     </script>
 </body>
 
