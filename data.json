@@ -22,9 +22,6 @@ Vs,Rats,9,1,#ae9fa4
 Vs,Elderly Woman,10,15,#ae9fa4
 Vs,Leash,11,2,#ae9fa4
 Vs,Indifference,12,2,#ae9fa4
-Vs,Hold On,13,0,#ae9fa4
-Vs,Cready Stomp,14,0,#ae9fa4
-Vs,Crazy Mary,15,4,#ae9fa4
 Vitalogy,Last Exit,1,4,#343432
 Vitalogy,Spin The Black Circle,2,4,#343432
 Vitalogy,Not For You,3,6,#343432
@@ -39,7 +36,6 @@ Vitalogy,Better Man,11,11,#343432
 Vitalogy,Aya Davanita,12,0,#343432
 Vitalogy,Immortality,13,7,#343432
 Vitalogy,Stupidmop,14,0,#343432
-Vitalogy,NONE,15,0,#343432
 No Code,Sometimes,1,2,#ddd9bb
 No Code,Hail Hail,2,3,#ddd9bb
 No Code,Who You Are,3,0,#ddd9bb
@@ -53,8 +49,6 @@ No Code,Present Tense,10,7,#ddd9bb
 No Code,Mankind,11,0,#ddd9bb
 No Code,I'm Open,12,1,#ddd9bb
 No Code,Around The Bend,13,0,#ddd9bb
-No Code,NONE,14,0,#ddd9bb
-No Code,NONE,15,0,#ddd9bb
 Yield,Brain of J,1,1,#c9b394
 Yield,Faithful,2,2,#c9b394
 Yield,No Way,3,0,#c9b394
@@ -68,8 +62,6 @@ Yield,Low Light,10,7,#c9b394
 Yield,In Hiding,11,2,#c9b394
 Yield,Push Me Pull Me,12,0,#c9b394
 Yield,All Those Yesterdays,13,1,#c9b394
-Yield,NONE,14,0,#c9b394
-Yield,NONE,15,0,#c9b394
 Binaural,Breakerfall,1,1,#622610
 Binaural,Gods Dice,2,0,#622610
 Binaural,Evacuation,3,0,#622610
@@ -83,8 +75,6 @@ Binaural,Rival,10,0,#622610
 Binaural,Sleight of Hand,11,0,#622610
 Binaural,Soon Forget,12,0,#622610
 Binaural,Parting Ways,13,0,#622610
-Binaural,NONE,14,0,#622610
-Binaural,NONE,15,0,#622610
 Riot Act,Can't Keep,1,1,#bf7e32
 Riot Act,Save You,2,2,#bf7e32
 Riot Act,Love Boat Captain,3,2,#bf7e32
@@ -113,8 +103,6 @@ Avocado,Wasted Reprise,10,2,#1a6aa3
 Avocado,Army Reserve,11,0,#1a6aa3
 Avocado,Come Back,12,3,#1a6aa3
 Avocado,Inside Job,13,4,#1a6aa3
-Avocado,NONE,14,0,#1a6aa3
-Avocado,NONE,15,0,#1a6aa3
 Backspacer,Gonna See My Friend,1,0,#34378c
 Backspacer,Got Some,2,2,#34378c
 Backspacer,The Fixer,3,0,#34378c
@@ -126,10 +114,6 @@ Backspacer,Supersonic,8,0,#34378c
 Backspacer,Speed Of Sound,9,0,#34378c
 Backspacer,Force Of Nature,10,0,#34378c
 Backspacer,The End,11,0,#34378c
-Backspacer,NONE,12,0,#34378c
-Backspacer,NONE,13,0,#34378c
-Backspacer,NONE,14,0,#34378c
-Backspacer,NONE,15,0,#34378c
 Lightning Bolt,Getaway,1,0,#b60101
 Lightning Bolt,Mind Your Manners,2,6,#b60101
 Lightning Bolt,My Father's Son,3,0,#b60101
@@ -142,9 +126,6 @@ Lightning Bolt,Let The Records Play,9,0,#b60101
 Lightning Bolt,Sleeping By Myself,10,0,#b60101
 Lightning Bolt,Yellow Moon,11,0,#b60101
 Lightning Bolt,Future Days,12,1,#b60101
-Lightning Bolt,NONE,13,0,#b60101
-Lightning Bolt,NONE,14,0,#b60101
-Lightning Bolt,NONE,15,0,#b60101
 Gigaton,Who Ever Said,1,2,#375168
 Gigaton,Superblood Wolfmoon,2,1,#375168
 Gigaton,Dance Of The Clairvoyants,3,3,#375168
@@ -157,9 +138,6 @@ Gigaton,Buckle Up,9,0,#375168
 Gigaton,Comes Then Goes,10,0,#375168
 Gigaton,Retrograde,11,0,#375168
 Gigaton,River Cross,12,1,#375168
-Gigaton,NONE,13,0,#375168
-Gigaton,NONE,14,0,#375168
-Gigaton,NONE,15,0,#375168
 Dark Matter,Scared Of Fear,1,22,#000000
 Dark Matter,React Respond,2,27,#000000
 Dark Matter,Wreckage,3,30,#000000
@@ -171,7 +149,3 @@ Dark Matter,Running,8,18,#000000
 Dark Matter,Something Special,9,6,#000000
 Dark Matter,Got To Give,10,1,#000000
 Dark Matter,Setting Sun,11,19,#000000
-Dark Matter,NONE,12,0,#000000
-Dark Matter,NONE,13,0,#000000
-Dark Matter,NONE,14,0,#000000
-Dark Matter,NONE,15,0,#000000
