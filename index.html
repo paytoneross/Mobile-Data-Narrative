@@ -56,16 +56,98 @@
         </div>
     </div>
 
-    <div id="my_dataviz"></div>
+    <div class="row table-responsive">
+        <div class="col-md-3"></div>
+        <div id='pjtable' class="col-md-6 table"></div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <script>
+        const dataArray = [
+            {
+                showNumb: '1',
+                city: 'Vancouver, Canada',
+                date: '5/4/24',
+                open: 'Wash',
+                close: 'Setting Sun',
+                total: '25',
+            },
+            {
+                showNumb: '2',
+                city: 'Vancouver, Canada',
+                date: '5/6/24',
+                open: 'Long Road',
+                close: 'Setting Sun',
+                total: '24',
+            },
+            {
+                showNumb: '3',
+                city: 'Portland, OR',
+                date: '5/10/24',
+                open: 'Release',
+                close: 'Setting Sun',
+                total: '25',
+            },
+            {
+                showNumb: '21',
+                city: 'Chicago, IL',
+                date: '8/31/24',
+                open: 'Garden',
+                close: 'Little Wing',
+                total: '25',
+            },
+            {
+                showNumb: '23',
+                city: 'New York, NY',
+                date: '9/4/24',
+                open: 'Garden',
+                close: 'Yellow Ledbetter',
+                total: '27',
+            },
+        ];
+        //If we call this function without a parameter, by default it will use an empty array
+        const createTable = (data = []) => {
+            let table = `<table class="table table-dark text-center table-striped">
+                <thead>
+                    <tr>
+                        <th>Show Number</th>
+                        <th>City</th>
+                        <th>Date</th>
+                        <th>Opener</th>
+                        <th>Closer</th>
+                        <th>Total Songs</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+            if (Array.isArray(data) && data.length > 0) {
+                for (let x = 0; x < data.length; x++) {
+                    //Create every row inside of the for loop
+                    table += `<tr>
+                    <td>${data[x].showNumb}</td>
+                    <td>${data[x].city}</td>
+                    <td>${data[x].date}</td>
+                    <td>${data[x].open}</td>
+                    <td>${data[x].close}</td>
+                    <td>${data[x].total}</td>
+                </tr>`;
+                }
+            }
+            return table += `</tbody></table>`;
+        }
+
+        document.getElementById('pjtable').innerHTML = createTable(dataArray);
+    </script>
+
+    <div id="album_heatmap"></div>
     <script>
 
         // set the dimensions and margins of the graph
         var margin = { top: 80, right: 25, bottom: 30, left: 40 },
-            width = 800 - margin.left - margin.right,
-            height = 800 - margin.top - margin.bottom;
+            width = 1200 - margin.left - margin.right,
+            height = 1200 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
-        var svg = d3.select("#my_dataviz")
+        var svg = d3.select("#album_heatmap")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -103,7 +185,7 @@
                 .select(".domain").remove()
 
             // create a tooltip
-            var tooltip = d3.select("#my_dataviz")
+            var tooltip = d3.select("#album_heatmap")
                 .append("div")
                 .style("opacity", 0)
                 .attr("class", "tooltip")
@@ -176,6 +258,52 @@
             .style("max-width", 400)
             .text("The darker the color, the more times the song was played.");
     </script>
+
+    <!--div id="song_circle_pack"></div>
+    <script>
+        // set the dimensions and margins of the graph
+        var width = 450
+        var height = 450
+
+        // append the svg object to the body of the page
+        var svg = d3.select("#song_circle_pack")
+            .append("svg")
+            .attr("width", 450)
+            .attr("height", 450)
+
+        // create dummy data -> just one element per circle
+        var data = [{ "name": "A" }, { "name": "B" }, { "name": "C" }, { "name": "D" }, { "name": "E" }, { "name": "F" }, { "name": "G" }, { "name": "H" }]
+
+        // Initialize the circle: all located at the center of the svg area
+        var node = svg.append("g")
+            .selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("r", 25)
+            .attr("cx", width / 2)
+            .attr("cy", height / 2)
+            .style("fill", "#69b3a2")
+            .style("fill-opacity", 0.3)
+            .attr("stroke", "#69a2b2")
+            .style("stroke-width", 4)
+
+        // Features of the forces applied to the nodes:
+        var simulation = d3.forceSimulation()
+            .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
+            .force("charge", d3.forceManyBody().strength(0.5)) // Nodes are attracted one each other of value is > 0
+            .force("collide", d3.forceCollide().strength(.01).radius(30).iterations(1)) // Force that avoids circle overlapping
+
+        // Apply these forces to the nodes and update their positions.
+        // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
+        simulation
+            .nodes(data)
+            .on("tick", function (d) {
+                node
+                    .attr("cx", function (d) { return d.x; })
+                    .attr("cy", function (d) { return d.y; })
+            });
+    </script-->
 </body>
 
 </html>
