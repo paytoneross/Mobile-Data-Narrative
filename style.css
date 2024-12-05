@@ -1,6 +1,7 @@
 body
 {
     padding: 20px;
+    background-color: slategrey;
 }
 h1
 {
@@ -13,4 +14,11 @@ p
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     text-align: left;
+}
+.pjbackground
+{
+    background-image: url('https://cms.kerrang.com/images/2024/04/_1200x630_crop_center-center_82_none/PEARL-JAM-WEB-SLEEVE-2024.jpg?mtime=1713173715');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
 }
