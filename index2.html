@@ -46,7 +46,7 @@
         d3.csv("https://raw.githubusercontent.com/paytoneross/Mobile-Data-Narrative/refs/heads/main/songdata.json", function(data) {
         
           // Filter a bit the data -> more than 1 million inhabitants
-          data = data.filter(function(d){ return d.value>0 })
+          data = data.filter(function(d){ return d.count>0 })
         
           // Color palette for continents?
           var color = d3.scaleOrdinal()
