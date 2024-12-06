@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Mobile Data Narrative - Page 1</title>
+    <title>Mobile Data Narrative - Page 3</title>
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <script src="https://d3js.org/d3.v4.js"></script>
@@ -18,53 +18,18 @@
     <div class="header">
         <a href="#default" class="logo">Mobile Data Narrative</a>
         <div class="header-right">
-            <a class="active" href="index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="index2.html">Song Data</a>
-            <a href="index3.html">Album Data</a>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <h1>Pearl Jam 2024 Tour Setlist Data Narrative</h1>
-            <p>For my data narrative, I decided to write about Pearl Jam's 2024 world tour setlist data.</p>
-            <p>&nbsp; &nbsp; &nbsp; &nbsp;I chose to write about this because Pearl Jam is one of my favorite bands, the
-                new album they put out this year is killer,
-                and the way they make their setlists is actually pretty interesting. Pearl Jam likes to write a unique
-                setlist for
-                every single show they play, and this makes their concerts super fun because you never know exactly what
-                you are going to get.
-                Because their setlists are always so unique, I wanted to analyze the data from their recent world tour
-                and see what trends we can find.
-            </p>
-            <p>&nbsp; &nbsp; &nbsp; &nbsp;Specifically, I wanted to categorize songs based on their concert rarity and
-                determine a rough likelyhood that each song could be played at any given show.
-                We can use this data to predict certain key songs in the setlist, such as the main set opening and
-                closing songs, as well as the encore opening and closing songs.
-                And we can also group songs by record, and determine a likely spread of songs from each record that
-                could be played at any given show.
-            </p>
-            <p>&nbsp; &nbsp; &nbsp; &nbsp;To ensure my data is accurate, I pulled the setlists from Pearl Jam's own
-                website and then verified them through the website "setlist.fm"
-                and the "Unofficial PJ Stat Tracker" fan app. I double verified them because Pearl Jam likes to "tag"
-                songs within other songs, or just play
-                snippits of certain songs and the official website doesn't always list those, so this makes sure I have
-                the most accurate data possible. I also only used
-                the data from their 2024 world tour, because the objective is to project likelyhood that songs could be
-                played at future shows. The Dark Matter tour
-                will obviously play a lot of songs from Dark Matter, so we can only guess how often these songs will be
-                played in the future, but songs from past records
-                will likely be played at a similar rate whenever Pearl Jam goes on tour again.
-            </p>
-        </div>
-        <div class="row">
-            <iframe class="youtube-video" src="https://www.youtube.com/embed/XYlN1iP5dXI?si=paxWDdhhpb_0IfZK" 
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-        encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen></iframe>
+            <a class="active" href="index3.html">Album Data</a>
         </div>
     </div>
 
-    <!--div id="album_heatmap"></div>
+    <div class="container-fluid">
+        <h1>Album Data Narrative</h1>
+        <p>Below you'll find a table showing how much playtime each album got on this tour, the darker the square, the more often it was played. Empty squares were not played.</p>
+    </div>
+
+    <div id="album_heatmap"></div>
     <script>
 
         // set the dimensions and margins of the graph
@@ -133,10 +98,10 @@
                 tooltip
                     //<br> to start a new line
                     .html("Song Name: " + d.name + "<br>" + "Number of times played: " + d.count) //count / value
-                    //.style("left", (d3.mouse(this)[0] + 70) + "px")
-                    //.style("top", (d3.mouse(this)[1]) + "px")
-                    .style("left", (d3.event.pageX + 10) + "px") // Add small offset to avoid overlap
-                    .style("top", (d3.event.pageY + 10) + "px")
+                    .style("left", (d3.mouse(this)[0] + 70) + "px")
+                    .style("top", (d3.mouse(this)[1]) + "px")
+                    //.style("left", (d3.event.pageX + 10) + "px") // Add small offset to avoid overlap
+                    //.style("top", (d3.event.pageY + 10) + "px")
                     .style("text-align", "center")
             }
             var mouseleave = function (d) {
@@ -184,8 +149,8 @@
             .style("font-size", "18px")
             .style("fill", "black")
             .style("max-width", 400)
-            .text("The darker the color, the more times the song was played.")
-    </script-->
+            .text("The darker the color, the more times the song was played.");
+    </script>
 </body>
 
 </html>
