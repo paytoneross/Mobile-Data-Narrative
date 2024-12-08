@@ -141,7 +141,7 @@
                 .attr("y", function (d) { return y(d.album) }) //album / y axis / variable
                 .attr("width", x.bandwidth())
                 .attr("height", y.bandwidth())
-                .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/en/f/f0/Pearl_Jam_-_Dark_Matter.png")
+                .attr("xlink:href", function (d) { return d.image })
                 .style("opacity", function (d) { return (d.count / (d3.max(data, d => d.count))) })
                 //.attr("fake", d => console.log((d.count / (d3.max(data, d => d.count)))))
                 .on("mouseover", mouseover)
