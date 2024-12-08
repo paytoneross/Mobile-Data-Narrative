@@ -16,7 +16,7 @@
 
 <body>
     <div class="header">
-        <a href="#default" class="logo">Mobile Data Narrative</a>
+        <a href="index.html" class="logo">Mobile Data Narrative</a>
         <div class="header-right">
             <a href="index.html">Home</a>
             <a class="active" href="index2.html">Song Data</a>
@@ -29,37 +29,36 @@
         <p>Below you'll find a graph showing each song played on this tour, the bigger the circle the more times it was played.</p>
     </div>
 
-    <div id="my_dataviz"></div>
+    <div id="song_circlepack"></div>
     <script>
         // set the dimensions and margins of the graph
-        var width = 460
-        var height = 460
+        var width = 920 //Try filling in "50%" or "auto"
+        var height = 460 //Will need to scale the size of the circles as well
         
         // append the svg object to the body of the page
-        var svg = d3.select("#my_dataviz")
+        var svg = d3.select("#song_circlepack")
           .append("svg")
             .attr("width", width)
             .attr("height", height)
         
         // Read data
-        //Old Data Link: https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv
         d3.csv("https://raw.githubusercontent.com/paytoneross/Mobile-Data-Narrative/refs/heads/main/songdata.json", function(data) {
         
-          // Filter a bit the data -> more than 1 million inhabitants
+          // Filter the data -> only songs that were played at least once
           data = data.filter(function(d){ return d.count>0 })
         
-          // Color palette for continents?
+          // Color palette for likelyhood tier?
           var color = d3.scaleOrdinal()
             .domain(["Very Likely", "Likely", "Unlikely", "Very Unlikely"])
             .range(d3.schemeSet1);
         
-          // Size scale for countries
+          // Size scale for circles, scale by play count
           var size = d3.scaleLinear()
-            .domain([0, 30]) // domain of number of times a song was played (0-30)
+            .domain([0, 30])
             .range([7,55])  // circle will be between 7 and 55 px wide
         
           // create a tooltip
-          var Tooltip = d3.select("#my_dataviz")
+          var Tooltip = d3.select("#song_circlepack")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -144,16 +143,16 @@
 
 <div class="container-fluid">
     <div class="row">
-        <p>Below you'll find a table showing every PJ song, how many times it was played, 
-            and the rough likelyhood it would be played at any future show. 
+        <p>If you are looking for a specific song, the table below shows every original Pearl Jam song, 
+            plus all other songs they played during this tour in alphabetical order.  
         </p>
     </div>
 </div>
 
     <div class="row table-responsive">
-        <div class="col-md-3"></div>
-        <div id='pjtable' class="col-md-6 table"></div>
-        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
+        <div id='pjtable' class="col-md-4 table"></div>
+        <div class="col-md-4"></div>
     </div>
 
     <script>
