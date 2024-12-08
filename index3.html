@@ -29,13 +29,13 @@
         <p>Below you'll find a table showing how much playtime each album got on this tour, the darker the square, the more often it was played. Empty squares were not played.</p>
     </div>
 
-    <div id="album_heatmap"></div>
+    <div class="overflow-x-auto" id="album_heatmap"></div>
     <script>
 
         // set the dimensions and margins of the graph
         var margin = { top: 80, right: 25, bottom: 30, left: 40 },
             width = 1200 - margin.left - margin.right,
-            height = 1200 - margin.top - margin.bottom;
+            height = 1000 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
         var svg = d3.select("#album_heatmap")
@@ -80,6 +80,7 @@
                 .append("div")
                 .style("opacity", 0)
                 .attr("class", "tooltip")
+                .style("position", "absolute")
                 .style("background-color", "white")
                 .style("border", "solid")
                 .style("border-width", "2px")
@@ -98,10 +99,10 @@
                 tooltip
                     //<br> to start a new line
                     .html("Song Name: " + d.name + "<br>" + "Number of times played: " + d.count) //count / value
-                    .style("left", (d3.mouse(this)[0] + 70) + "px")
-                    .style("top", (d3.mouse(this)[1]) + "px")
-                    //.style("left", (d3.event.pageX + 10) + "px") // Add small offset to avoid overlap
-                    //.style("top", (d3.event.pageY + 10) + "px")
+                    //.style("left", (d3.mouse(this)[0] + 70) + "px")
+                    //.style("top", (d3.mouse(this)[1]) + "px")
+                    .style("left", (d3.event.pageX + 10) + "px") // Add small offset to avoid overlap
+                    .style("top", (d3.event.pageY + 10) + "px")
                     .style("text-align", "center")
             }
             var mouseleave = function (d) {
@@ -113,19 +114,34 @@
             }
 
             // add the squares
+            // svg.selectAll()
+            //     .data(data, function (d) { return d.position + ':' + d.album; })
+            //     .enter()
+            //     .append("rect")
+            //     .attr("x", function (d) { return x(d.position) }) //position / x axis / group
+            //     .attr("y", function (d) { return y(d.album) }) //album / y axis / variable
+            //     .attr("rx", 4)
+            //     .attr("ry", 4)
+            //     .attr("width", x.bandwidth())
+            //     .attr("height", y.bandwidth())
+            //     .style("fill", function (d) { return d.color })
+            //     .style("stroke-width", 4)
+            //     .style("stroke", "none")
+            //     .style("opacity", function (d) { return (d.count / (d3.max(data, d => d.count))) })
+            //     //.attr("fake", d => console.log((d.count / (d3.max(data, d => d.count)))))
+            //     .on("mouseover", mouseover)
+            //     .on("mousemove", mousemove)
+            //     .on("mouseleave", mouseleave)
+
             svg.selectAll()
                 .data(data, function (d) { return d.position + ':' + d.album; })
                 .enter()
-                .append("rect")
+                .append("image")
                 .attr("x", function (d) { return x(d.position) }) //position / x axis / group
                 .attr("y", function (d) { return y(d.album) }) //album / y axis / variable
-                .attr("rx", 4)
-                .attr("ry", 4)
                 .attr("width", x.bandwidth())
                 .attr("height", y.bandwidth())
-                .style("fill", function (d) { return d.color })
-                .style("stroke-width", 4)
-                .style("stroke", "none")
+                .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/en/f/f0/Pearl_Jam_-_Dark_Matter.png")
                 .style("opacity", function (d) { return (d.count / (d3.max(data, d => d.count))) })
                 //.attr("fake", d => console.log((d.count / (d3.max(data, d => d.count)))))
                 .on("mouseover", mouseover)

@@ -29,7 +29,7 @@
         <p>Below you'll find a graph showing each song played on this tour, the bigger the circle the more times it was played.</p>
     </div>
 
-    <div id="song_circlepack"></div>
+    <div class="overflow-x-auto" id="song_circlepack"></div>
     <script>
         // set the dimensions and margins of the graph
         var width = 920 //Try filling in "50%" or "auto"
@@ -62,6 +62,7 @@
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
+            .style("position", "absolute")
             .style("background-color", "white")
             .style("border", "solid")
             .style("border-width", "2px")
@@ -76,8 +77,10 @@
           var mousemove = function(d) {
             Tooltip
               .html('<u>' + d.name + '</u>' + "<br>" + "Times Played: " + d.count + "<br>" + "Likelyhood: " + d.tier)
-              .style("left", (d3.mouse(this)[0]+20) + "px")
-              .style("top", (d3.mouse(this)[1]) + "px")
+              //.style("left", (d3.mouse(this)[0] + 20) + "px")
+              //.style("top", (d3.mouse(this)[1]) + "px")
+              .style("left", (d3.event.pageX + 10) + "px") // Add small offset to avoid overlap
+              .style("top", (d3.event.pageY + 10) + "px")
           }
           var mouseleave = function(d) {
             Tooltip
@@ -136,9 +139,9 @@
             if (!d3.event.active) simulation.alphaTarget(.03);
             d.fx = null;
             d.fy = null;
-          }
-        
-        })       
+          }        
+        })   
+
         </script>
 
 <div class="container-fluid">
