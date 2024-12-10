@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mobile Data Narrative - Page 2</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!--Scalability Stuff-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Libraries needed for React.js -->
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- This is where we create our custom React elements -->
+  <script src='assets/js/React/Component/ReactDataTable.js' type='text/babel'></script>
+
+  <!--Libraries for bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+  <!-- Libraries needed for D3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <a href="index.html" class="logo">Mobile Data Narrative</a>
+    <div class="header-right">
+      <a href="index.html">Home</a>
+      <a class="active" href="react.html">Song Data</a>
+      <a href="index3.html">Album Data</a>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <h1>Song Data</h1>
+    <p>Below you'll find a graph showing each song played on this tour, the bigger the circle the more times it was
+      played.</p>
+  </div>
+
+  <div class="overflow-x-auto graphbackground" id="song_circlepack"></div>
+  <script>
+    // set the dimensions and margins of the graph
+    var width = 920 //Try filling in "50%" or "auto"
+    var height = 460 //Will need to scale the size of the circles as well
+
+    // append the svg object to the body of the page
+    var svg = d3.select("#song_circlepack")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+
+    // Read data
+    d3.csv("https://raw.githubusercontent.com/paytoneross/Mobile-Data-Narrative/refs/heads/main/songdata.json", function (data) {
+
+      // Filter the data -> only songs that were played at least once
+      data = data.filter(function (d) { return d.count > 0 })
+
+      // Color palette for likelyhood tier?
+      var color = d3.scaleOrdinal()
+        .domain(["Very Likely", "Likely", "Unlikely", "Very Unlikely"])
+        .range(d3.schemeSet1);
+
+      // Size scale for circles, scale by play count
+      var size = d3.scaleLinear()
+        .domain([0, 30])
+        .range([7, 55])  // circle will be between 7 and 55 px wide
+
+      // create a tooltip
+      var Tooltip = d3.select("#song_circlepack")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
+
+      // Three function that change the tooltip when user hover / move / leave a cell
+      var mouseover = function (d) {
+        Tooltip
+          .style("opacity", 1)
+      }
+      var mousemove = function (d) {
+        Tooltip
+          .html('<u>' + d.name + '</u>' + "<br>" + "Times Played: " + d.count + "<br>" + "Likelyhood: " + d.tier)
+          //.style("left", (d3.mouse(this)[0] + 20) + "px")
+          //.style("top", (d3.mouse(this)[1]) + "px")
+          .style("left", (d3.event.pageX + 10) + "px") // Add small offset to avoid overlap
+          .style("top", (d3.event.pageY + 10) + "px")
+      }
+      var mouseleave = function (d) {
+        Tooltip
+          .style("opacity", 0)
+      }
+
+      // Initialize the circle: all located at the center of the svg area
+      var node = svg.append("g")
+        .selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "node")
+        .attr("r", function (d) { return size(d.count) })
+        .attr("cx", width / 2)
+        .attr("cy", height / 2)
+        .style("fill", function (d) { return color(d.tier) })
+        .style("fill-opacity", 0.8)
+        .attr("stroke", "black")
+        .style("stroke-width", 1)
+        .on("mouseover", mouseover) // What to do when hovered
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+        .call(d3.drag() // call specific function when circle is dragged
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+      // Features of the forces applied to the nodes:
+      var simulation = d3.forceSimulation()
+        .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
+        .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
+        .force("collide", d3.forceCollide().strength(.2).radius(function (d) { return (size(d.count) + 3) }).iterations(1)) // Force that avoids circle overlapping
+
+      // Apply these forces to the nodes and update their positions.
+      // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
+      simulation
+        .nodes(data)
+        .on("tick", function (d) {
+          node
+            .attr("cx", function (d) { return d.x; })
+            .attr("cy", function (d) { return d.y; })
+        });
+
+      // What happens when a circle is dragged?
+      function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(.03).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+      function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+      }
+      function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(.03);
+        d.fx = null;
+        d.fy = null;
+      }
+    })
+
+  </script>
+
+  <div class="container-fluid">
+    <div class="row">
+      <p>If you are looking for a specific song, the table below shows every original Pearl Jam song,
+        plus all other songs they played during this tour in alphabetical order.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- This is the anchor location for our react.js table-->
+  <div class="container-fluid">
+    <div class="row">
+      <div id="react-data-table" class="col-md-12">
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -24,11 +24,14 @@ p {
     background-position-x: center;
 }
 
-.narrowtable
+.graphbackground {
+    background-color: #b5b5b5;
+    text-align: center;
+}
+
+.songtable
 {
-    max-width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 15px;
 }
 
 .youtube-video {
