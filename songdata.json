@@ -1,7 +1,9 @@
 name,count,tier,open,close,cover
+(I Can't Get No) Satisfaction,2,Very Unlikely,false,false,true
 1/2 Full,1,Very Unlikely,false,false,false
 2000 Mile Blues,0,Very Unlikely,false,false,false
 Alive,30,Very Likely,false,false,false
+All Along The Watchtower,1,Very Unlikely,false,false,true
 All Night,2,Very Unlikely,false,false,false
 All Or None,0,Very Unlikely,false,false,false
 All The Way,0,Very Unlikely,false,false,false
@@ -11,10 +13,12 @@ Alright,0,Very Unlikely,false,false,false
 Amongst The Waves,1,Very Unlikely,false,false,false
 Angel,0,Very Unlikely,false,false,false
 Animal,3,Unlikely,false,false,false
+Another Brick In The Wall,7,Unlikely,false,false,true
 Arc,0,Very Likely,false,false,false
 Army Reserve,0,Very Unlikely,false,false,false
 Around The Bend,0,Very Unlikely,false,false,false
 Aya Davanita,0,Very Unlikely,false,false,false
+Baba O'Riley,9,Unlikely,false,true,true
 Bee Girl,0,Very Unlikely,false,false,false
 Better Man,11,Likely,false,false,false
 Big Wave,1,Very Unlikely,false,false,false
@@ -34,7 +38,9 @@ Comatose,1,Very Unlikely,false,false,false
 Come Back,3,Unlikely,false,false,false
 Comes Then Goes,0,Very Unlikely,false,false,false
 Corduroy,19,Likely,false,false,false
+Crazy Mary,4,Unlikely,false,false,true
 Cropduster,0,Very Unlikely,false,false,false
+Crown Of Thorns,2,Very Unlikely,false,false,true
 Dance of the Clairvoyants,3,Unlikely,false,false,false
 Dark Matter,27,Very Likely,false,false,false
 Daughter,18,Likely,true,false,false
@@ -50,21 +56,25 @@ Driftin,0,Very Unlikely,false,false,false
 Education,0,Very Unlikely,false,false,false
 Elderly Woman,15,Likely,true,false,false
 The End,0,Very Unlikely,false,false,false
+Eruption,1,Very Unlikely,false,false,true
 Evacuation,0,Very Unlikely,false,false,false
 Even Flow,27,Very Likely,false,false,false
 Evil Little Goat,0,Very Unlikely,false,false,false
 Faithfull,2,Very Unlikely,false,false,false
 Falling Down,0,Very Unlikely,false,false,false
+Falling Slowly,3,Unlikely,false,false,true
 Fatal,0,Very Unlikely,false,false,false
 The Fixer,0,Very Unlikely,false,false,false
 Footsteps,3,Unlikely,true,false,false,false
 Force Of Nature,0,Very Unlikely,false,false,false
 Fuck Me In The Brain,0,Very Unlikely,false,false,false
+Fuckin' Up,2,Very Unlikely,false,false,true
 Future Days,1,Very Unlikely,false,false,false
 Garden,5,Unlikely,true,false,false
 Get Right,0,Very Unlikely,false,false,false
 Getaway,0,Very Unlikely,false,false,false
 Ghost,0,Very Unlikely,false,false,false
+Gimme Some Truth,2,Very Unlikely,false,false,true
 Given To Fly,18,Likely,true,false,false
 Glorified G,2,Very Unlikely,false,false,false
 Go,1,Very Unlikely,false,false,false
@@ -80,11 +90,17 @@ Habit,2,Very Unlikely,false,false,false
 Hail Hail,3,Unlikely,false,false,false
 Hard To Imagine,2,Very Unlikely,false,false,false
 Help Help,0,Very Unlikely,false,false,false
+Her Majesty,1,Very Unlikely,false,false,true
 Hitchhiker,0,Very Unlikely,false,false,false
 Hold On,0,Very Unlikely,false,false,false
+Hurt,1,Very Unlikely,false,false,true
+I Am A Patriot,2,Very Unlikely,false,false,true
 I Am Mine,2,Very Unlikely,false,false,false
 I Got Id,2,Very Unlikely,false,false,false
+I Won't Back Down,6,Unlikely,false,false,true
+It Ain't Like That,1,Very Unlikely,false,false,true
 I'm Open,1,Very Unlikely,false,false,false
+Imagine,2,Very Unlikely,false,false,true
 Immortality,7,Unlikely,false,false,false
 In Hiding,2,Very Unlikely,false,false,false
 In My Tree,5,Unlikely,false,false,false
@@ -97,12 +113,16 @@ Jeremy,13,Likely,false,false,false
 Johnny Guitar,0,Very Unlikely,false,false,false
 Just A Girl,0,Very Unlikely,false,false,false
 Just Breathe,8,Unlikely,false,false,false
+Keep Me In Your Heart,2,Very Unlikely,false,false,false
 Last Exit,4,Unlikely,false,false,false
+Last Kiss,2,Very Unlikely,false,false,true
 Leash,2,Very Unlikely,false,false,false
 Leatherman,1,Very Unlikely,false,false,false
+Leaving Here,1,Very Unlikely,false,false,true
 Let Me Sleep,0,Very Unlikely,false,false,false
 Let The Records Play,0,Very Unlikely,false,false,false
 Life Wasted,2,Very Unlikely,false,false,false
+Little Wing,2,Very Unlikely,false,true,true
 Light Years,1,Very Unlikely,false,false,false
 Lightning Bolt,1,Very Unlikely,false,false,false
 Long Road,3,Unlikely,true,false,false
@@ -112,8 +132,12 @@ Lukin,5,Unlikely,true,false,false
 Man Of The Hour,1,Very Unlikely,false,false,false
 Mankind,0,Very Unlikely,false,false,false
 Marker In The Sand,0,Very Unlikely,false,false,false
+Maybe It's Time,2,Very Unlikely,false,false,true
 MFC,3,Unlikely,false,false,false
 Mind Your Manners,6,Unlikely,false,false,false
+Modern Girl,7,Unlikely,false,false,true
+Monkey Gone To Heaven,1,Very Unlikely,false,false,true
+My City Of Ruins,1,Very Unlikely,false,false,true
 My Father's Son,0,Very Unlikely,false,false,false
 Never Destination,0,Very Unlikely,false,false,false
 No More,0,Very Unlikely,false,false,false
@@ -132,6 +156,7 @@ Out Of My Mind,2,Very Unlikely,false,false,false
 Parachutes,0,Very Unlikely,false,false,false
 Parting Ways,0,Very Unlikely,false,false,false
 Pendulum,2,Very Unlikely,true,false,false
+Picture In A Frame,1,Very Unlikely,false,false,true
 Pilate,1,Very Unlikely,false,false,false
 Porch,22,Very Likely,false,false,false
 Present Tense,7,Unlikely,false,false,false
@@ -147,9 +172,11 @@ Release,5,Unlikely,true,false,false
 Retrograde,0,Very Unlikely,false,false,false
 Rival,0,Very Unlikely,false,false,false
 River Cross,1,Very Unlikely,false,false,false
+Rockin In The Free World,15,Likely,false,true,true
 Running,18,Likely,false,false,false
 Sad,0,Very Unlikely,false,false,false
 Satan's Bed,2,Very Unlikely,false,false,false
+Save It For Later,10,Unlikely,false,false,true
 Save You,2,Very Unlikely,false,false,false
 Scared Of Fear,22,Very Likely,false,false,false
 Setting Sun,18,Likely,false,true,false
@@ -162,17 +189,22 @@ Sleight Of Hand,0,Very Unlikely,false,false,false
 Smile,5,Unlikely,false,false,false
 Something Special,6,Unlikely,false,false,false
 Sometimes,2,Very Unlikely,true,false,false
+Song Of Good Hope,5,Unlikely,false,false,true
+Sonic Reducer,2,Very Unlikely,false,false,true
 Soon Forget,0,Very Unlikely,false,false,false
 Speed Of Sound,0,Very Unlikely,false,false,false
 Spin The Black Circle,4,Unlikely,false,false,false
 State Of Love And Trust,6,Unlikely,false,false,false
+Stranglehold,1,Very Unlikely,false,false,true
 Stupid Mop,0,Very Unlikely,false,false,false
 Superblood Wolfmoon,1,Very Unlikely,false,false,false
 Supersonic,0,Very Unlikely,false,false,false
 Swallowed Whole,0,Very Unlikely,false,false,false
 Sweet Lew,0,Very Unlikely,false,false,false
 Take The Long Way,0,Very Unlikely,false,false,false
+There She Goes,1,Very Unlikely,false,false,true
 Thin Air,1,Very Unlikely,false,false,false
+Throw Your Arms Around Me,1,Very Unlikely,false,false,true
 Thumbing My Way,0,Very Unlikely,false,false,false
 Tremor Christ,2,Very Unlikely,false,false,false
 U,1,Very Unlikely,false,false,false
