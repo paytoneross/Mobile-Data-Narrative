@@ -31,7 +31,7 @@ p {
 
 .songtable
 {
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .youtube-video {
@@ -90,4 +90,17 @@ p {
 .node:hover{
     stroke-width: 7px !important;
     opacity: 1 !important;
+}
+#titleanim
+{
+    position: relative;
+    animation-name: title;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+@keyframes title
+{
+    0% {left: 40%;}
+    75% {left:40%;}
+    100% {left:0%;}
 }
