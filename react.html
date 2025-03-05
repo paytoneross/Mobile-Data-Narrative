@@ -4,6 +4,7 @@
 <head>
   <title>Mobile Data Narrative - Page 2</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/99c7c973d5.js" crossorigin="anonymous"></script>
 
   <!--Scalability Stuff-->
   <meta charset="UTF-8">
@@ -36,13 +37,74 @@
       <a href="index.html">Home</a>
       <a class="active" href="react.html">Song Data</a>
       <a href="index3.html">Album Data</a>
+      <a href="Mobile Narrative Data HTML.htm">Setlists</a>
     </div>
   </div>
 
   <div class="container-fluid">
-    <h1>Song Data</h1>
-    <p>Below you'll find a graph showing each song played on this tour, the bigger the circle the more times it was
-      played.</p>
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="bigtitle">Song Data Analysis</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;On this page, we have data for each individual song played on this tour,
+          as well as a table where we apply data from this tour to the entire Pearl Jam discography.
+          I have categorized each song into approximate tiers of likelyhood that they could be played
+          at a concert, based on how many times they were played this tour.
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;I have categorized the likelyhood tiers as follows: <br>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Very Likely:</b> >20 Times Played, >66% chance.
+          <br>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Likely:</b> >10 Times Played, 66-33% chance. <br>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Unlikely:</b> >2 Times Played, &lt33% chance. <br>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Very Unlikely:</b> &lt2 Times Played, &lt10%
+          chance.
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;Keep in mind that these tiers are rough estimations, so don't take them as a
+          fact. They are not meant to be 100% accurate. There are several songs 
+          that appear in the Very Unlikely tier that seem to have just gotten unlucky
+          due to the relatively small sample size of this tour. As I gather more data from future shows, the
+          accuracy of the tiers will increase.
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;Below you'll find a circle plot showing each song played at least once on this
+          tour,
+          the bigger the circle the more times it was
+          played. You can hover over a circle for information, such as song name, times played this tour,
+          and the likelyhood tier they are placed in.
+          You can also drag the circles around if you want to organize or play with it.
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid graphbackground">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="bigtitle">Song Circle Plot</h1>
+      </div>
+    </div>
   </div>
 
   <div class="overflow-x-auto graphbackground" id="song_circlepack"></div>
@@ -156,24 +218,89 @@
         d.fx = null;
         d.fy = null;
       }
-    })
 
+    })
   </script>
 
-  <div class="container-fluid">
+  <div class="container-fluid graphbackground">
     <div class="row">
-      <p>Average Setlist Length: 25 Songs</p>
+      <div class="col-md-12">
+        <h1>Legend:</h1>
+      </div>
     </div>
     <div class="row">
-      <p>If you are looking for a specific song, the table below shows every original Pearl Jam song,
-        plus all other songs they played during this tour in alphabetical order.
-      </p>
+      <div class="col-md-2">
+        <p>Very Likely:<br>>20 Times Played</p>
+      </div>
+      <div class="col-md-1">
+        <i class="fa-solid fa-circle redcircle"></i>
+      </div>
+      <div class="col-md-2">
+        <p>Likely:<br>>10 Times Played</p>
+      </div>
+      <div class="col-md-1">
+        <i class="fa-solid fa-circle bluecircle"></i>
+      </div>
+      <div class="col-md-2">
+        <p>Unlikely:<br>>2 Times Played</p>
+      </div>
+      <div class="col-md-1">
+        <i class="fa-solid fa-circle greencircle"></i>
+      </div>
+      <div class="col-md-2">
+        <p>Very Unlikely:<br>&lt2 Times Played</p>
+      </div>
+      <div class="col-md-1">
+        <i class="fa-solid fa-circle purplecircle"></i>
+      </div>
     </div>
   </div>
 
+  <div class="container-fluid">
+    <div class="row">
+      <h1 class="bigtitle">My Conclusions</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;The first thing that I'm noticing is that my favorite song is in the Very Unlikely tier 
+          which is very unfortunate for me. Aside from that, we can see a pretty good spread of songs in each tier. 
+          Looking at the songs in each tier, everything makes sense to me and there aren't any songs that jump out to me as being very inaccurate. 
+          There are 8 songs in Very Likely, 14 song in Likely, 39 in Unlikely, and 81 in Very Unlikely. The reason I sort by tier is not only to 
+          categorize the data, but also to predict the amount of songs from each tier that may appear in future setlists. My idea is that the 
+          amount of songs in each tier that will may appear in a setlist should roughly be the same as the percent threshold for each tier. 
+        </p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;So, averaging the likelyhood percentages to the middle of the tier range,
+          we can say that roughly 75% of the songs in Very Likely, 50% of the songs in Likely, 22% of the songs in Unlikely, 
+          and 5% of the songs in Very Unlikely should appear in a setlist. Applying these percentages to the total number of songs in each tier, 
+          we get 6 songs in Very Likely, 7 songs in Likely, 9 songs in Unlikely, and 4 songs in Very Unlikely. Adding these together gives us roughly 
+          26 songs in a setlist, which is very close to the average number of songs played per show this tour, 25. As I collect more data, we can 
+          strengthen this relationship to hopefully be more accurate, but I think the corellation seems pretty strong. 
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;Feel free to play around on the circle plot, see if you can find your favorite song, 
+          or try to sort them in any way you like.
+          If you are looking for data on a specific song the table below shows every Pearl Jam song,
+          original and covers, in alphabetical order. You can also filter the data and sort by likelyhood tier, 
+          and whether the song is a potential opening song, closing song, or if the song is a cover. 
+        </p>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
 
   <!-- This is the anchor location for our react.js table-->
-  <div class="container-fluid">
+  <div class="container-fluid graphbackground">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="bigtitle">Song Data Table</h1>
+      </div>
+    </div>
     <div class="row">
       <div id="react-data-table" class="col-md-12">
 

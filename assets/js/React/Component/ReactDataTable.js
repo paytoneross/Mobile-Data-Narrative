@@ -23,8 +23,8 @@
         }
         return (
             <React.Fragment>
-                <p><b>Filters:</b></p>
-                <div className='container'>
+                <h1>Filters</h1>
+                <div className='container-fluid'>
                     <div className='row'>
                         <div className='col-md-3'>
                             <b>Likelyhood</b>
@@ -308,7 +308,7 @@
         {
             "name": "Arc",
             "count": "0",
-            "tier": "Very Likely",
+            "tier": "Very Unlikely",
             "open": false,
             "close": false,
             "cover": false

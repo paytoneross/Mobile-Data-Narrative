@@ -17,6 +17,25 @@ p {
     text-align: left;
 }
 
+.bigtitle
+{
+    font-size: 75px;
+}
+
+.mainpagediv
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainpageimage
+{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
 .pjbackground {
     background-image: url('https://cms.kerrang.com/images/2024/04/_1200x630_crop_center-center_82_none/PEARL-JAM-WEB-SLEEVE-2024.jpg?mtime=1713173715');
     background-repeat: no-repeat;
@@ -36,8 +55,13 @@ p {
 
 .youtube-video {
     aspect-ratio: 16/9;
-    width: 50%;
-    max-width: 720px;
+    width: 100%;
+}
+
+.youtuberow 
+{
+    display: flex;
+    justify-content: center;
 }
 
 .header {
@@ -103,4 +127,37 @@ p {
     0% {left: 40%;}
     75% {left:40%;}
     100% {left:0%;}
+}
+.legendborder
+{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+.redcircle
+{
+    color: #dc4949;
+    font-size: 50px;
+}
+.bluecircle
+{
+    color: #568ec5;
+    font-size: 50px;
+}
+.greencircle
+{
+    color: #5ba35b;
+    font-size: 50px;
+}
+.purplecircle
+{
+    color: #935491;
+    font-size: 50px;
+}
+#content-frame {
+    height: 1000px; /* Adjust height minus the tab strip */
+}
+#tab-strip {
+    height: 17px;
 }
